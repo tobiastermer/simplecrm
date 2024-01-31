@@ -1,42 +1,51 @@
-<h1 mat-dialog-title>Add user</h1>
-<div mat-dialog-content>
-    <p>What's your name?</p>
-    <div>
-        <mat-form-field appearance="fill" class="mr-16">
-            <mat-label>First Name</mat-label>
-            <input [(ngModel)]="user.firstName" matInput placeholder="First name">
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Last Name</mat-label>
-            <input [(ngModel)]="user.lastName" matInput placeholder="Last name">
-        </mat-form-field>
+<div class="dialog-container">
+
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+    <h1 mat-dialog-title>Add user</h1>
+    <div mat-dialog-content>
+        <p>What's your name?</p>
+        <div>
+            <mat-form-field appearance="fill" class="mr-16">
+                <mat-label>First Name</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.firstName" matInput placeholder="First name">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Last Name</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.lastName" matInput placeholder="Last name">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill" class="mr-16">
+                <mat-label>Email</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.email" matInput placeholder="Email">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Birthday</mat-label>
+                <input [disabled]="loading" [(ngModel)]="birthDate" matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Street + House No.</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.street" matInput placeholder="Street + House No.">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill" class="mr-16">
+                <mat-label>Zip code</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.zipCode" matInput placeholder="Zip code">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>City</mat-label>
+                <input [disabled]="loading" [(ngModel)]="user.city" matInput placeholder="City">
+            </mat-form-field>
+        </div>
     </div>
-    <div>
-        <mat-form-field>
-            <mat-label>Birthday</mat-label>
-            <input [(ngModel)]="birthDate" matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+    <div mat-dialog-actions>
+        <button mat-button [disabled]="loading" (click)="closeDialog()">Cancel</button>
+        <button mat-button [disabled]="loading" (click)="saveUser()" cdkFocusInitial>Save</button>
     </div>
-    <div>
-        <mat-form-field appearance="fill" class="full-width">
-            <mat-label>Street + House No.</mat-label>
-            <input [(ngModel)]="user.street" matInput placeholder="Street + House No.">
-        </mat-form-field>
-    </div>
-    <div>
-        <mat-form-field appearance="fill" class="mr-16">
-            <mat-label>Zip code</mat-label>
-            <input [(ngModel)]="user.zipCode" matInput placeholder="Zip code">
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>City</mat-label>
-            <input [(ngModel)]="user.city" matInput placeholder="City">
-        </mat-form-field>
-    </div>
-</div>
-<div mat-dialog-actions>
-    <button mat-button>Cancel</button>
-    <button mat-button (click)="saveUser()" cdkFocusInitial>Save</button>
 </div>

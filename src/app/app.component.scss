@@ -7,6 +7,7 @@ mat-drawer-container {
     display: flex;
     align-items: center;
     padding-left: 16px;
+    padding-right: 16px;
 }
 
 .sidenav {
@@ -19,7 +20,10 @@ mat-drawer-container {
         height: 55px;
         display: flex;
         align-items: center;
-        justify-content: center;
+
+        .logo {
+            height: 32px;
+        }
     }
 
     ul{
@@ -54,3 +58,4 @@ mat-icon {
         cursor: pointer;
     }
 }
+
