@@ -8,6 +8,7 @@
     flex-direction: unset;
     padding-left: 16px;
     padding-right: 16px;
+    position: relative;
 
     .user-detail-header-content {
         display: flex;
@@ -37,7 +38,17 @@
 }
 
 .user-content {
+    position: relative;
+
     mat-card-title{
         padding: 16px 16px 0 16px;
     }
+
+    
+}
+
+.btn-edit {
+    position: absolute;
+    right: 0;
+    top: 0;
 }

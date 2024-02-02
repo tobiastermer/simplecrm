@@ -32,6 +32,15 @@ export class UserService {
         }
     }
 
+    async updateUser(user: User) {
+        if (user.id) {
+            let docRef = doc(collection(this.firestore, "users"), user.id);
+            await updateDoc(docRef, this.getCleanJSON(user)).catch(
+                (err) => { console.log(err); }
+            )
+        }
+    }
+
     getAllUsers() {
         const q = query(collection(this.firestore, 'users'));
         return onSnapshot(q, (list) => {
@@ -39,7 +48,6 @@ export class UserService {
             list.forEach(element => {
                 this.users.push(this.setUserObject(element.data(), element.id));
                 console.log(this.users);
-
             });
         });
     }
